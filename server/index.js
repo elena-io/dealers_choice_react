@@ -14,10 +14,8 @@ app.use('/assets', express.static(path.join(__dirname, '../assets')));
 app.use(express.static('assets'));
 app.use(require('../router.js'));
 
-app.use(express.static(path.join(__dirname, '..', 'node_modules', 'font-awesome', 'css')))
+app.use('/css', express.static(path.join(__dirname, '..', 'node_modules', 'font-awesome', 'css')))
 app.use('/fonts', express.static(path.join(__dirname, '..', 'node_modules', 'font-awesome', 'fonts')))
-
-
 
 const {
   conn,

@@ -45,6 +45,8 @@ img {
 
 #inner {
     margin: 2em;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 /* Footer Styles */
@@ -70,7 +72,6 @@ img {
   .whitelogo:hover {
     color:lightgray;
   }
-
   .row {
     text-align: center;
   }

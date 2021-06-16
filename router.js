@@ -21,6 +21,20 @@ router.get('/api/customers', async (req, res, next) => {
     }
 })
 
+router.get('/api/items', async (req, res, next) => {
+    try {
+        const items = await Item.findAll({
+            include: [
+                { model: Customer }
+            ]
+        })
+        res.json(items)
+    }
+    catch(ex) {
+        next(ex);
+    }
+})
+
 router.get('/api/customers/:id', async (req, res, next) => {
     try {
         const customer = await Customer.findByPk(req.params.id, {

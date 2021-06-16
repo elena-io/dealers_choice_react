@@ -1,9 +1,10 @@
 import React from 'react';
 import axios from 'axios'
 import CustomersList from './CustomersList'
-import Customer from './Customer'
 import Nav from './Nav'
 import Footer from './Footer'
+import ItemsList from './ItemsList'
+import Orders from './Orders'
 
 
 export default class App extends React.Component {
@@ -11,6 +12,7 @@ export default class App extends React.Component {
     super();
     this.state = {
       customers: [],
+      items: [],
       loading: true
     }
   }
@@ -19,12 +21,13 @@ export default class App extends React.Component {
    // const { data } = await axios.get('/api/customers')
     this.setState({
       customers: (await axios.get('/api/customers')).data,
+      items: (await axios.get('/api/items')).data,
       loading: false
     }) 
   }
   
   render () {
-    const { customers, loading } = this.state;
+    const { customers, loading, items } = this.state;
     console.log(customers);
     if(loading){
       return '...loading';
@@ -34,6 +37,8 @@ export default class App extends React.Component {
         <Nav />
         <div id="inner">
          <CustomersList customers={this.state.customers} />
+        <ItemsList items={this.state.items} />
+        <Orders />
          
         </div>
         <Footer />
