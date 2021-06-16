@@ -1,48 +1,42 @@
 import React from 'react';
 import axios from 'axios'
-// import CustomersList from './CustomersList'
-// import Customer from './Customer'
+import CustomersList from './CustomersList'
+import Customer from './Customer'
 import Nav from './Nav'
 import Footer from './Footer'
 
 
 export default class App extends React.Component {
   constructor () {
-    super()
+    super();
     this.state = {
-      customers: []
+      customers: [],
+      loading: true
     }
   }
 
   async componentDidMount () {
-    const { data } = await axios.get('/api/customers')
+   // const { data } = await axios.get('/api/customers')
     this.setState({
-      customers: data
+      customers: (await axios.get('/api/customers')).data,
+      loading: false
     }) 
   }
   
   render () {
-    const customers = this.state;
+    const { customers, loading } = this.state;
     console.log(customers);
+    if(loading){
+      return '...loading';
+    }
     return (
-      <div id="main">
+      <div id="main">  
         <Nav />
-        <Footer />
-        <div>
+        <div id="inner">
+         <CustomersList customers={this.state.customers} />
          
         </div>
-        {/* <CustomersList /> */}
-        {/* <ul>
-        {
-            customers.map(customer => {
-              <li key={ customer.id}>
-                { customer.name }
-              </li>
-            })
-
-          }
-
-        </ul>   */}
+        <Footer />
       </div>
     );
   }

@@ -7,6 +7,7 @@ const CustomersList = (props) => {
 
     return (
         <div className="customers">
+            <h3> Customers </h3>
             {
                 customers.map(customer => <Customer customer={customer} key={customer.id}/>)
             }

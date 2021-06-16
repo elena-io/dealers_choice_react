@@ -43,6 +43,10 @@ img {
     transform: rotate(160deg);
 }
 
+#inner {
+    margin: 2em;
+}
+
 /* Footer Styles */
 .footer {
     background-color: rgb(26 24 24);

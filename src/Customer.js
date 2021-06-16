@@ -7,7 +7,7 @@ const Customer = (props) => {
     return (
         <div className="customer">
             <a>
-                <p>{ name }</p>
+                { name }
             </a>
         </div>
         )
