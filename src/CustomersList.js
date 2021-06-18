@@ -8,6 +8,7 @@ const CustomersList = (props) => {
     return (
         <div>
             <h3> Customers </h3>
+            <a href="#"> All Customeers </a>
             {
                 customers.map(customer => <Customer customer={customer} key={customer.id}/>)
             }

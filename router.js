@@ -49,4 +49,33 @@ router.get('/api/customers/:id', async (req, res, next) => {
     }
 })
 
+router.get('/api/orders', async (req, res, next) => {
+    try {
+        const orders = await Order.findAll({
+            include: [
+                { model: Customer,
+                model:  Item}
+            ]
+        })
+        res.json(orders)
+    }
+    catch(ex) {
+        next(ex);
+    }
+})
+
+router.get('/api/customers/:id/orders', async (req, res, next) => {
+    try {
+        res.send(await Order.findAll({
+            where: {
+                customerId: req.params.id
+            },
+            include: [ Customer, Item ]
+        }))
+    }
+    catch(ex) {
+        next(ex);
+    }
+})
+
 module.exports = router;
