@@ -49,6 +49,16 @@ img {
     justify-content: space-evenly;
 }
 
+.selected {
+    border-bottom: 2px solid #1a1818;
+    width: fit-content;
+   
+}
+
+.selected a {
+    color: #d29d61 !important;
+}
+
 /* Footer Styles */
 .footer {
     background-color: rgb(26 24 24);
